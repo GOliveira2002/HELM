@@ -1,6 +1,8 @@
 <div align="center">
 
-# ⚓ HELM — PM Command Center
+# ⚓ HELM — Hub for Execution, Learning & Milestones
+
+## PM Command Center
 
 **Ferramenta open-source de gestão de projetos ágil**  
 Pensada como projeto flagship para portfólio técnico, com foco em práticas modernas de produto, engenharia e DevOps.
