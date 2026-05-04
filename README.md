@@ -4,11 +4,11 @@
 
 ## PM Command Center
 
-**Open-source agile project management tool**  
-Built as a flagship portfolio project, focused on modern product, engineering and DevOps practices.
+**Open-source agile project management tool — runs entirely in your browser, no server required.**  
+Built as a flagship portfolio project, focused on modern product and frontend engineering practices.
 
 [![Status](https://img.shields.io/badge/status-in_development-yellow?style=flat-square)](https://github.com)
-[![Stack](https://img.shields.io/badge/stack-Next.js_+_FastAPI-blue?style=flat-square)](https://github.com)
+[![Stack](https://img.shields.io/badge/stack-Next.js-blue?style=flat-square)](https://github.com)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
 
@@ -18,9 +18,9 @@ Built as a flagship portfolio project, focused on modern product, engineering an
 
 ## 🎯 What is HELM?
 
-HELM is a full-featured project management application in the style of **Jira / Linear**, but simplified, open-source, and built from scratch with modern product and engineering best practices.
+HELM is a lightweight project management application that runs **entirely on your machine** — no accounts, no servers, no internet connection required. Just open it and start managing your projects.
 
-The goal isn't just to build another Kanban clone — it's to create a platform that demonstrates **real product thinking**, with performance metrics, workflow automation, and a scalable end-to-end architecture.
+Data is stored locally in your browser via `localStorage`, keeping everything private and always available offline.
 
 ### What problems does it solve?
 
@@ -28,59 +28,68 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 |---|---|
 | Scattered sprint management | Sprint planner + drag & drop Kanban board |
 | Lack of progress visibility | Burndown chart + velocity tracking |
-| Inaccurate estimations | PERT estimation engine + CLI |
-| Manual GitHub work | Automated issues, PRs and changelogs |
-| Data locked in the tool | CSV / PDF export |
+| Inaccurate estimations | PERT estimation engine |
+| Data locked in external tools | Everything stays on your machine |
+| Forced sign-ups and subscriptions | Zero accounts, zero cost, forever |
 
 ---
 
 ## 🧱 Tech Stack
 
 ### Frontend
-- **Next.js** — SSR, routing and UI performance
+- **Next.js** — routing, SSR-ready structure and UI performance
 - **Custom Design System** — consistent and reusable components
 - **DnD Kit** — drag & drop for the Kanban board
+- **Tailwind CSS** — utility-first styling
 
-### Backend
-- **FastAPI** — high-performance REST API, easy to scale
-- **PostgreSQL** — robust relational database
-- **Prisma or SQLAlchemy** — ORM (decision to be made in Phase 1)
-
-### Auth & Security
-- **JWT + Refresh Tokens** — stateless, secure authentication without unnecessary complexity
+### Data Storage
+- **localStorage** — all data stored locally in the browser, no database required
 
 ### DevOps
-- **GitHub Actions** — CI/CD from the very first commit
-- **Vercel** — frontend deployment
-- **Railway** — backend and database deployment
+- **GitHub Actions** — CI/CD for linting and build checks
 
-### Extras
-- **Python CLI** — time estimations via command line
-- **Webhooks** — integrations with external services
-- **CSV / PDF Export** — data always accessible
+> No backend. No database. No authentication. No deployment needed.
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/your-user/helm.git
+cd helm
+
+# Install dependencies
+npm install
+
+# Run locally
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and you're ready to go.
 
 ---
 
 ## 🗺️ Roadmap
 
 ### ✅ Phase 1 — Foundation `2–3 weeks`
-> Build the solid technical and structural base of the project.
+> Set up the project structure and base UI.
 
-- [ ] Mono-repo with Next.js + FastAPI
-- [ ] Database setup (PostgreSQL + ORM)
-- [ ] Authentication system (JWT + refresh tokens)
-- [ ] Design system + base layout
+- [ ] Next.js project setup with Tailwind
+- [ ] Base layout + navigation
+- [ ] Design system (colors, typography, components)
+- [ ] localStorage data layer
 - [ ] CI/CD with GitHub Actions
-- [ ] Initial project README
+- [ ] Initial README
 
 ---
 
 ### 🚧 Phase 2 — Core PM (Sprints) `3–4 weeks`
-> Implement the core agile project management features.
+> Build the core agile project management features.
 
 - [ ] Kanban board with drag & drop
-- [ ] Sprint data model
-- [ ] Tasks REST API (full CRUD)
+- [ ] Project and sprint management
+- [ ] Task CRUD (create, edit, delete, reorder)
 - [ ] Sprint planner
 - [ ] Simplified Timeline / Gantt
 - [ ] Story points tracking + velocity
@@ -88,10 +97,9 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 ---
 
 ### 📈 Phase 3 — Analytics `2–3 weeks`
-> Introduce metrics and team performance analysis.
+> Introduce metrics and performance insights.
 
 - [ ] Estimation engine (PERT)
-- [ ] Python estimation CLI
 - [ ] Velocity dashboard
 - [ ] Burndown chart
 - [ ] Data export (CSV / PDF)
@@ -99,7 +107,7 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 ---
 
 ### 🔁 Phase 4 — GitHub Automation `1–2 weeks`
-> Integrate automated workflows with GitHub.
+> Automate workflows around the repository.
 
 - [ ] Auto-close stale issues
 - [ ] Automatic CHANGELOG generation
@@ -110,11 +118,10 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 ---
 
 ### 🌍 Phase 5 — Portfolio & Documentation `1–2 weeks`
-> Make the project presentable, public and impressive.
+> Make the project presentable and public.
 
 - [ ] Public landing page
 - [ ] Interactive demo (video or GIF)
-- [ ] Full deployment (Vercel + Railway)
 - [ ] Complete README with badges
 - [ ] Technical blog in MDX (PM and engineering articles)
 
@@ -124,10 +131,10 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 
 | Decision | Rationale |
 |---|---|
-| **Mono-repo** | Consistency between frontend and backend; simpler deployments |
-| **FastAPI** | Performance, modern Python typing, automatic docs (OpenAPI) |
-| **Next.js** | SSR for SEO and performance, excellent DX |
-| **JWT + refresh tokens** | Solid security without server-side session overhead |
+| **No backend** | Keeps the project simple and fully local |
+| **localStorage** | Zero setup, works offline, data stays private |
+| **Next.js** | Modern React framework, great DX, portfolio-worthy |
+| **Tailwind CSS** | Fast styling, consistent design tokens |
 | **CI/CD from day one** | Enforces best practices and avoids technical debt |
 | **Analytics focus** | Differentiates the project from simple Kanban clones |
 
@@ -135,11 +142,10 @@ The goal isn't just to build another Kanban clone — it's to create a platform 
 
 ## 🚀 Project Value
 
-This project demonstrates real product engineering capability:
+This project demonstrates real frontend product engineering:
 
-- **End-to-end product** — from data model to production deployment
-- **Multiple integrated technologies** — frontend, backend, database, DevOps
-- **Architecture best practices** — separation of concerns, CI/CD, testing
+- **Complete frontend product** — from data layer to polished UI
+- **No-backend architecture** — intentional simplicity, fully offline
 - **Product thinking** — not just code, but user-driven decisions
 - **Open-source and public** — open codebase, clear documentation, contributions welcome
 
@@ -147,11 +153,10 @@ This project demonstrates real product engineering capability:
 
 ## 📌 Future Extensions
 
-- 👥 **Multi-user / teams** — shared workspaces with permissions
-- 🔐 **RBAC** — granular role-based access control
-- 💬 **Slack / Discord integration** — real-time notifications
+- 💾 **JSON file export/import** — backup and restore your data
+- 👥 **Multi-user / teams** — shared workspaces (would require a backend)
+- ⚡ **Real-time sync (WebSockets)** — live collaboration
 - 🤖 **ML for estimations** — predictive models based on historical data
-- ⚡ **Real-time (WebSockets)** — live updates on the Kanban board
 
 ---
 
@@ -164,7 +169,7 @@ If you find this project useful or interesting, there are several ways to contri
 - 🤝 **Contribute code** — PRs are always welcome
 - 💸 **Support financially** via GoFundMe *(link to be added)*
 
-> Your support helps keep development active, improve infrastructure and dedicate more time to new features.
+> Your support helps keep development active and dedicate more time to new features.
 
 ---
 
