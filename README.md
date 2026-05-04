@@ -4,172 +4,172 @@
 
 ## PM Command Center
 
-**Ferramenta open-source de gestão de projetos ágil**  
-Pensada como projeto flagship para portfólio técnico, com foco em práticas modernas de produto, engenharia e DevOps.
+**Open-source agile project management tool**  
+Built as a flagship portfolio project, focused on modern product, engineering and DevOps practices.
 
-[![Status](https://img.shields.io/badge/status-em_desenvolvimento-yellow?style=flat-square)](https://github.com)
+[![Status](https://img.shields.io/badge/status-in_development-yellow?style=flat-square)](https://github.com)
 [![Stack](https://img.shields.io/badge/stack-Next.js_+_FastAPI-blue?style=flat-square)](https://github.com)
-[![License](https://img.shields.io/badge/licença-MIT-green?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
 
 </div>
 
 ---
 
-## 🎯 O que é o HELM?
+## 🎯 What is HELM?
 
-O HELM é uma aplicação completa de gestão de projetos no estilo **Jira / Linear**, mas simplificada, open-source e construída de raiz com as melhores práticas de produto e engenharia modernas.
+HELM is a full-featured project management application in the style of **Jira / Linear**, but simplified, open-source, and built from scratch with modern product and engineering best practices.
 
-O objetivo não é apenas construir mais um clone de Kanban — é criar uma plataforma que demonstre **pensamento de produto real**, com métricas de performance, automação de workflows, e uma arquitetura escalável de ponta a ponta.
+The goal isn't just to build another Kanban clone — it's to create a platform that demonstrates **real product thinking**, with performance metrics, workflow automation, and a scalable end-to-end architecture.
 
-### O que resolve?
+### What problems does it solve?
 
-| Problema | Solução no HELM |
+| Problem | HELM's Solution |
 |---|---|
-| Gestão de sprints dispersa | Sprint planner + Kanban com drag & drop |
-| Falta de visibilidade de progresso | Burndown chart + velocity tracking |
-| Estimativas imprecisas | Motor de estimativas PERT + CLI |
-| Trabalho manual com GitHub | Automação de issues, PRs e changelogs |
-| Dados presos na ferramenta | Exportação CSV / PDF |
+| Scattered sprint management | Sprint planner + drag & drop Kanban board |
+| Lack of progress visibility | Burndown chart + velocity tracking |
+| Inaccurate estimations | PERT estimation engine + CLI |
+| Manual GitHub work | Automated issues, PRs and changelogs |
+| Data locked in the tool | CSV / PDF export |
 
 ---
 
-## 🧱 Stack Tecnológica
+## 🧱 Tech Stack
 
 ### Frontend
-- **Next.js** — SSR, routing e performance de UI
-- **Design System custom** — componentes consistentes e reutilizáveis
-- **DnD Kit** — drag & drop para o Kanban board
+- **Next.js** — SSR, routing and UI performance
+- **Custom Design System** — consistent and reusable components
+- **DnD Kit** — drag & drop for the Kanban board
 
 ### Backend
-- **FastAPI** — API REST de alta performance, fácil de escalar
-- **PostgreSQL** — base de dados relacional robusta
-- **Prisma ou SQLAlchemy** — ORM (decisão a tomar na Fase 1)
+- **FastAPI** — high-performance REST API, easy to scale
+- **PostgreSQL** — robust relational database
+- **Prisma or SQLAlchemy** — ORM (decision to be made in Phase 1)
 
-### Auth & Segurança
-- **JWT + Refresh Tokens** — autenticação stateless e segura sem complexidade excessiva
+### Auth & Security
+- **JWT + Refresh Tokens** — stateless, secure authentication without unnecessary complexity
 
 ### DevOps
-- **GitHub Actions** — CI/CD desde o primeiro commit
-- **Vercel** — deploy do frontend
-- **Railway** — deploy do backend e base de dados
+- **GitHub Actions** — CI/CD from the very first commit
+- **Vercel** — frontend deployment
+- **Railway** — backend and database deployment
 
 ### Extras
-- **CLI em Python** — estimativas de tempo via linha de comandos
-- **Webhooks** — integrações com serviços externos
-- **Exportação CSV / PDF** — dados sempre acessíveis
+- **Python CLI** — time estimations via command line
+- **Webhooks** — integrations with external services
+- **CSV / PDF Export** — data always accessible
 
 ---
 
 ## 🗺️ Roadmap
 
-### ✅ Fase 1 — Fundação `2–3 semanas`
-> Criar a base técnica e estrutural sólida do projeto.
+### ✅ Phase 1 — Foundation `2–3 weeks`
+> Build the solid technical and structural base of the project.
 
-- [ ] Mono-repo com Next.js + FastAPI
-- [ ] Setup de base de dados (PostgreSQL + ORM)
-- [ ] Sistema de autenticação (JWT + refresh tokens)
-- [ ] Design system + layout base
-- [ ] CI/CD com GitHub Actions
-- [ ] README inicial do projeto
+- [ ] Mono-repo with Next.js + FastAPI
+- [ ] Database setup (PostgreSQL + ORM)
+- [ ] Authentication system (JWT + refresh tokens)
+- [ ] Design system + base layout
+- [ ] CI/CD with GitHub Actions
+- [ ] Initial project README
 
 ---
 
-### 🚧 Fase 2 — Core PM (Sprints) `3–4 semanas`
-> Implementar as funcionalidades principais de gestão ágil.
+### 🚧 Phase 2 — Core PM (Sprints) `3–4 weeks`
+> Implement the core agile project management features.
 
-- [ ] Kanban board com drag & drop
-- [ ] Modelo de dados para sprints
-- [ ] API REST de tarefas (CRUD completo)
+- [ ] Kanban board with drag & drop
+- [ ] Sprint data model
+- [ ] Tasks REST API (full CRUD)
 - [ ] Sprint planner
-- [ ] Timeline / Gantt simplificado
-- [ ] Tracking de story points + velocity
+- [ ] Simplified Timeline / Gantt
+- [ ] Story points tracking + velocity
 
 ---
 
-### 📈 Fase 3 — Analytics `2–3 semanas`
-> Introduzir métricas e análise de performance da equipa.
+### 📈 Phase 3 — Analytics `2–3 weeks`
+> Introduce metrics and team performance analysis.
 
-- [ ] Motor de estimativas (PERT)
-- [ ] CLI de estimativas em Python
-- [ ] Dashboard de velocidade
+- [ ] Estimation engine (PERT)
+- [ ] Python estimation CLI
+- [ ] Velocity dashboard
 - [ ] Burndown chart
-- [ ] Exportação de dados (CSV / PDF)
+- [ ] Data export (CSV / PDF)
 
 ---
 
-### 🔁 Fase 4 — Automação GitHub `1–2 semanas`
-> Integrar workflows automáticos com GitHub.
+### 🔁 Phase 4 — GitHub Automation `1–2 weeks`
+> Integrate automated workflows with GitHub.
 
-- [ ] Auto-close de issues antigas
-- [ ] Geração automática de CHANGELOG
-- [ ] Alertas de PRs parados
-- [ ] Webhooks para notificações
-- [ ] Release notes automáticas
-
----
-
-### 🌍 Fase 5 — Portfólio & Documentação `1–2 semanas`
-> Tornar o projeto apresentável, público e impressionante.
-
-- [ ] Landing page pública
-- [ ] Demo interativa (vídeo ou GIF)
-- [ ] Deploy completo (Vercel + Railway)
-- [ ] README completo com badges
-- [ ] Blog técnico em MDX (artigos de PM e engenharia)
+- [ ] Auto-close stale issues
+- [ ] Automatic CHANGELOG generation
+- [ ] Stalled PRs alerts
+- [ ] Webhooks for notifications
+- [ ] Automatic release notes
 
 ---
 
-## 💡 Decisões Técnicas
+### 🌍 Phase 5 — Portfolio & Documentation `1–2 weeks`
+> Make the project presentable, public and impressive.
 
-| Decisão | Justificação |
+- [ ] Public landing page
+- [ ] Interactive demo (video or GIF)
+- [ ] Full deployment (Vercel + Railway)
+- [ ] Complete README with badges
+- [ ] Technical blog in MDX (PM and engineering articles)
+
+---
+
+## 💡 Technical Decisions
+
+| Decision | Rationale |
 |---|---|
-| **Mono-repo** | Consistência entre frontend e backend; deploys mais simples |
-| **FastAPI** | Performance, tipagem Python moderna, docs automáticas (OpenAPI) |
-| **Next.js** | SSR para SEO e performance, excelente DX |
-| **JWT + refresh tokens** | Segurança sólida sem overhead de sessões server-side |
-| **CI/CD desde o início** | Força boas práticas e evita dívida técnica |
-| **Foco em Analytics** | Diferencia o projeto de simples clones de Kanban |
+| **Mono-repo** | Consistency between frontend and backend; simpler deployments |
+| **FastAPI** | Performance, modern Python typing, automatic docs (OpenAPI) |
+| **Next.js** | SSR for SEO and performance, excellent DX |
+| **JWT + refresh tokens** | Solid security without server-side session overhead |
+| **CI/CD from day one** | Enforces best practices and avoids technical debt |
+| **Analytics focus** | Differentiates the project from simple Kanban clones |
 
 ---
 
-## 🚀 Valor do Projeto
+## 🚀 Project Value
 
-Este projeto demonstra capacidade real de engenharia de produto:
+This project demonstrates real product engineering capability:
 
-- **Produto end-to-end** — do modelo de dados ao deploy em produção
-- **Múltiplas tecnologias integradas** — frontend, backend, base de dados, DevOps
-- **Boas práticas de arquitetura** — separação de responsabilidades, CI/CD, testes
-- **Pensamento de produto** — não apenas código, mas decisões orientadas ao utilizador
-- **Open-source e público** — código aberto, documentação clara, contribuições bem-vindas
-
----
-
-## 📌 Extensões Futuras
-
-- 👥 **Multi-user / equipas** — workspaces partilhados com permissões
-- 🔐 **RBAC** — controlo de acessos granular por role
-- 💬 **Integração Slack / Discord** — notificações em tempo real
-- 🤖 **ML para estimativas** — modelos preditivos baseados em histórico
-- ⚡ **Tempo real (WebSockets)** — atualizações live no Kanban
+- **End-to-end product** — from data model to production deployment
+- **Multiple integrated technologies** — frontend, backend, database, DevOps
+- **Architecture best practices** — separation of concerns, CI/CD, testing
+- **Product thinking** — not just code, but user-driven decisions
+- **Open-source and public** — open codebase, clear documentation, contributions welcome
 
 ---
 
-## ❤️ Apoiar o Projeto
+## 📌 Future Extensions
 
-Se achares este projeto útil ou interessante, podes contribuir de várias formas:
+- 👥 **Multi-user / teams** — shared workspaces with permissions
+- 🔐 **RBAC** — granular role-based access control
+- 💬 **Slack / Discord integration** — real-time notifications
+- 🤖 **ML for estimations** — predictive models based on historical data
+- ⚡ **Real-time (WebSockets)** — live updates on the Kanban board
 
-- ⭐ **Dá uma estrela** no GitHub — ajuda na visibilidade
-- 🐛 **Reporta bugs** ou sugere novas features via Issues
-- 🤝 **Contribui com código** — PRs são sempre bem-vindos
-- 💸 **Apoia financeiramente** via GoFundMe *(link a adicionar)*
+---
 
-> O apoio ajuda a manter o desenvolvimento ativo, melhorar infraestruturas e dedicar mais tempo a novas funcionalidades.
+## ❤️ Support the Project
+
+If you find this project useful or interesting, there are several ways to contribute:
+
+- ⭐ **Star the repo** on GitHub — it helps with visibility
+- 🐛 **Report bugs** or suggest new features via Issues
+- 🤝 **Contribute code** — PRs are always welcome
+- 💸 **Support financially** via GoFundMe *(link to be added)*
+
+> Your support helps keep development active, improve infrastructure and dedicate more time to new features.
 
 ---
 
 <div align="center">
 
-Feito com ☕ e demasiadas horas de trabalho · [Issues](https://github.com) · [Discussions](https://github.com)
+Made with ☕ and way too many late nights · [Issues](https://github.com) · [Discussions](https://github.com)
 
 </div>
