@@ -1,26 +1,86 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   HELM — Design Tokens
+───────────────────────────────────────── */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme */
+  --bg-base:        #f4f3f0;
+  --bg-surface:     #ffffff;
+  --bg-raised:      #eeecea;
+  --bg-overlay:     #e8e6e3;
+
+  --border:         #dddbd7;
+  --border-strong:  #c8c5c0;
+
+  --text-primary:   #1a1917;
+  --text-secondary: #6b6760;
+  --text-muted:     #a09d98;
+
+  --accent:         #e8622a;
+  --accent-hover:   #d4541e;
+  --accent-subtle:  #fdf0eb;
+
+  --sidebar-width:  240px;
+  --topbar-height:  52px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme='dark'] {
+  --bg-base:        #141312;
+  --bg-surface:     #1c1b19;
+  --bg-raised:      #242220;
+  --bg-overlay:     #2c2a28;
+
+  --border:         #2e2c2a;
+  --border-strong:  #3d3b38;
+
+  --text-primary:   #f0ede8;
+  --text-secondary: #8c8880;
+  --text-muted:     #5a5752;
+
+  --accent:         #e8622a;
+  --accent-hover:   #f07040;
+  --accent-subtle:  #2a1a12;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─────────────────────────────────────────
+   Base
+───────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
+
+/* ─────────────────────────────────────────
+   Scrollbar
+───────────────────────────────────────── */
+
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ─────────────────────────────────────────
+   Utilities
+───────────────────────────────────────── */
+
+.font-mono { font-family: 'DM Mono', monospace; }
