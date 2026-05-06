@@ -4,11 +4,11 @@
 
 ## PM Command Center
 
-**Open-source agile project management tool — runs entirely in your browser, no server required.**  
-Built as a flagship portfolio project, focused on modern product and frontend engineering practices.
+**Open-source agile project management tool — runs as a native desktop app, no cloud required.**  
+Built as a flagship portfolio project, focused on modern product and desktop engineering practices.
 
 [![Status](https://img.shields.io/badge/status-in_development-yellow?style=flat-square)](https://github.com)
-[![Stack](https://img.shields.io/badge/stack-Next.js-blue?style=flat-square)](https://github.com)
+[![Stack](https://img.shields.io/badge/stack-Tauri_+_React-blue?style=flat-square)](https://github.com)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
 
@@ -18,9 +18,9 @@ Built as a flagship portfolio project, focused on modern product and frontend en
 
 ## 🎯 What is HELM?
 
-HELM is a lightweight project management application that runs **entirely on your machine** — no accounts, no servers, no internet connection required. Just open it and start managing your projects.
+HELM is a lightweight **desktop application** for agile project management — no accounts, no servers, no internet connection required. Install it, open it, and start managing your projects.
 
-Data is stored locally in your browser via `localStorage`, keeping everything private and always available offline.
+Data is stored in a local **SQLite database** on your machine (`~/Documents/helm/helm.db`), keeping everything private, persistent, and always available offline — unaffected by browser cache clears or browser updates.
 
 ### What problems does it solve?
 
@@ -29,56 +29,97 @@ Data is stored locally in your browser via `localStorage`, keeping everything pr
 | Scattered sprint management | Sprint planner + drag & drop Kanban board |
 | Lack of progress visibility | Burndown chart + velocity tracking |
 | Inaccurate estimations | PERT estimation engine |
-| Data locked in external tools | Everything stays on your machine |
+| Data locked in external tools | Everything stays on your machine, in a portable `.db` file |
 | Forced sign-ups and subscriptions | Zero accounts, zero cost, forever |
+| Browser-dependent storage | Native desktop app — SQLite survives any browser clear |
 
 ---
 
 ## 🧱 Tech Stack
 
-### Frontend
-- **Next.js** — routing, SSR-ready structure and UI performance
+### Frontend (UI Layer)
+- **React + TypeScript** — component-driven UI with full type safety
+- **Vite** — fast dev server and bundler (replaces Next.js in desktop context)
 - **Custom Design System** — consistent and reusable components
 - **DnD Kit** — drag & drop for the Kanban board
 - **Tailwind CSS** — utility-first styling
 
-### Data Storage
-- **localStorage** — all data stored locally in the browser, no database required
+### Backend (Native Layer)
+- **Tauri** — Rust-powered desktop runtime; bridges the React UI to the OS
+- **SQLite** (via `rusqlite`) — persistent local database, stored as a single `.db` file on disk
+- **Rust** — handles all file system access, database queries, and native OS integration
 
 ### DevOps
-- **GitHub Actions** — CI/CD for linting and build checks
+- **GitHub Actions** — CI/CD for linting, build checks, and automated releases
+- **Tauri Bundler** — cross-platform builds (`.dmg`, `.exe`, `.AppImage`) from a single command
 
-> No backend. No database. No authentication. No deployment needed.
+> No server. No cloud. No authentication. Data lives on your machine.
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────┐
+│         React (TypeScript)      │  ← All UI: Kanban, charts, forms
+│         Tailwind + DnD Kit      │
+└────────────┬────────────────────┘
+             │  Tauri IPC (invoke commands)
+┌────────────▼────────────────────┐
+│         Rust (Tauri backend)    │  ← Business logic, file system access
+│         rusqlite + SQLite       │
+└────────────┬────────────────────┘
+             │
+┌────────────▼────────────────────┐
+│    ~/Documents/helm/helm.db     │  ← Persistent local database
+└─────────────────────────────────┘
+```
+
+The React layer calls Tauri commands (like `get_sprints`, `create_task`) via `invoke()`. Rust handles the SQLite queries and returns typed data back to the UI. The database file persists independently of any browser or web context.
 
 ---
 
 ## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js 18+](https://nodejs.org/)
+- [Rust](https://rustup.rs/) (installed via `rustup`)
+- [Tauri CLI](https://tauri.app/v1/guides/getting-started/prerequisites)
 
 ```bash
 # Clone the repo
 git clone https://github.com/your-user/helm.git
 cd helm
 
-# Install dependencies
+# Install frontend dependencies
 npm install
 
-# Run locally
-npm run dev
+# Install Tauri CLI
+cargo install tauri-cli
+
+# Run in development mode (hot-reload UI + native backend)
+cargo tauri dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and you're ready to go.
+### Building a distributable
+```bash
+cargo tauri build
+# Outputs: src-tauri/target/release/bundle/
+# → helm.dmg (macOS), helm_setup.exe (Windows), helm.AppImage (Linux)
+```
 
 ---
 
 ## 🗺️ Roadmap
 
 ### ✅ Phase 1 — Foundation `2–3 weeks`
-> Set up the project structure and base UI.
+> Set up the project structure, Tauri bridge, and base UI.
 
-- [ ] Next.js project setup with Tailwind
+- [ ] Tauri + React + TypeScript project setup
 - [ ] Base layout + navigation
 - [ ] Design system (colors, typography, components)
-- [ ] localStorage data layer
+- [ ] SQLite schema + Rust data layer (`rusqlite`)
+- [ ] Tauri IPC commands for basic CRUD
 - [ ] CI/CD with GitHub Actions
 - [ ] Initial README
 
@@ -102,7 +143,7 @@ Open [http://localhost:3000](http://localhost:3000) and you're ready to go.
 - [ ] Estimation engine (PERT)
 - [ ] Velocity dashboard
 - [ ] Burndown chart
-- [ ] Data export (CSV / PDF)
+- [ ] Data export (CSV / JSON backup)
 
 ---
 
@@ -131,32 +172,34 @@ Open [http://localhost:3000](http://localhost:3000) and you're ready to go.
 
 | Decision | Rationale |
 |---|---|
-| **No backend** | Keeps the project simple and fully local |
-| **localStorage** | Zero setup, works offline, data stays private |
-| **Next.js** | Modern React framework, great DX, portfolio-worthy |
-| **Tailwind CSS** | Fast styling, consistent design tokens |
-| **CI/CD from day one** | Enforces best practices and avoids technical debt |
+| **Tauri over Electron** | ~10MB binary vs ~150MB; Rust backend is more impressive and performant |
+| **SQLite over localStorage** | Persistent on disk, survives browser clears, portable, queryable |
+| **SQLite over IndexedDB** | IndexedDB can still be wiped by browser settings; `.db` file cannot |
+| **React + Vite (not Next.js)** | No SSR needed in a desktop app; Vite is faster and lighter |
+| **Rust for native layer** | Demonstrates cross-language knowledge (TypeScript + Rust) |
+| **CI/CD from day one** | Enforces best practices and enables automated releases |
 | **Analytics focus** | Differentiates the project from simple Kanban clones |
 
 ---
 
 ## 🚀 Project Value
 
-This project demonstrates real frontend product engineering:
+This project demonstrates real full-stack desktop engineering:
 
-- **Complete frontend product** — from data layer to polished UI
-- **No-backend architecture** — intentional simplicity, fully offline
+- **Cross-language architecture** — TypeScript UI + Rust native backend
+- **Persistent local-first data** — SQLite on disk, zero cloud dependency
+- **Native desktop distribution** — installable binary on macOS, Windows, and Linux
 - **Product thinking** — not just code, but user-driven decisions
-- **Open-source and public** — open codebase, clear documentation, contributions welcome
+- **Open-source and public** — clear documentation, contributions welcome
 
 ---
 
 ## 📌 Future Extensions
 
-- 💾 **JSON file export/import** — backup and restore your data
-- 👥 **Multi-user / teams** — shared workspaces (would require a backend)
-- ⚡ **Real-time sync (WebSockets)** — live collaboration
-- 🤖 **ML for estimations** — predictive models based on historical data
+- 🔄 **JSON/CSV import** — migrate data from Jira, Linear, or Notion
+- 👥 **Multi-user / teams** — shared workspaces via a local network server
+- ⚡ **Real-time sync** — optional cloud backup (user-controlled)
+- 🤖 **ML for estimations** — predictive models based on historical velocity data
 
 ---
 
@@ -167,9 +210,6 @@ If you find this project useful or interesting, there are several ways to contri
 - ⭐ **Star the repo** on GitHub — it helps with visibility
 - 🐛 **Report bugs** or suggest new features via Issues
 - 🤝 **Contribute code** — PRs are always welcome
-- 💸 **Support financially** via GoFundMe *(link to be added)*
-
-> Your support helps keep development active and dedicate more time to new features.
 
 ---
 
