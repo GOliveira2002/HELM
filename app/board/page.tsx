@@ -490,7 +490,7 @@ export default function BoardPage() {
 
     if (projects.length === 0) return (
         <div style={{ padding: '2rem 2.5rem' }}>
-            <h1 style={{ fontSize: '20px', fontWeight: 500, marginBottom: '8px' }}>Board</h1>
+            <h1 style={{ fontSize: '20px', fontWeight: 500, marginBottom: '8px' }}>Kanban board</h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Create a project first.</p>
         </div>
     )
@@ -502,7 +502,7 @@ export default function BoardPage() {
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 {/* Header */}
                 <div style={{ padding: '2rem 2rem 1rem', flexShrink: 0 }}>
-                    <h1 style={{ fontSize: '20px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '12px' }}>Board</h1>
+                    <h1 style={{ fontSize: '20px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '12px' }}>Kanban board</h1>
                     <div style={{ display: 'flex', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
                         {projects.map(p => (
                             <button key={p.id} onClick={() => setSelectedProject(p.id)} style={{
