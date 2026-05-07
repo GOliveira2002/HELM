@@ -242,6 +242,45 @@ export default function GanttPage() {
                         </button>
                     ))}
                 </div>
+                {/* Date range controls */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <label style={{ fontSize: '12px', color: 'var(--text-muted)' }}>From</label>
+                        <input
+                            type="date"
+                            value={toISO(ganttStart)}
+                            onChange={e => setGanttStart(new Date(e.target.value))}
+                            style={{
+                                background: 'var(--bg-raised)', border: '1px solid var(--border)',
+                                borderRadius: '6px', padding: '4px 8px', fontSize: '12px',
+                                color: 'var(--text-primary)', fontFamily: 'inherit', outline: 'none',
+                                colorScheme: 'dark',
+                            }}
+                        />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <label style={{ fontSize: '12px', color: 'var(--text-muted)' }}>To</label>
+                        <input
+                            type="date"
+                            value={toISO(ganttEnd)}
+                            onChange={e => setGanttEnd((new Date(e.target.value)))}
+                            style={{
+                                background: 'var(--bg-raised)', border: '1px solid var(--border)',
+                                borderRadius: '6px', padding: '4px 8px', fontSize: '12px',
+                                color: 'var(--text-primary)', fontFamily: 'inherit', outline: 'none',
+                                colorScheme: 'dark',
+                            }}
+                        />
+                    </div>
+                    <button
+                        onClick={() => loadData(selectedProject)}
+                        style={{
+                            background: 'transparent', border: '1px solid var(--border)',
+                            borderRadius: '6px', padding: '4px 12px', fontSize: '12px',
+                            color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'inherit',
+                        }}
+                    >Reset</button>
+                </div>
             </div>
 
             {/* Gantt */}
